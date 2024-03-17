@@ -5,6 +5,8 @@ import { CustomImage } from "../CustomImage/CustomImage";
 import { useEffect, useRef, useState } from "react";
 import { useIsElementVisible } from "../../hooks/useIsElementVisible";
 import { ANIMATION_CLASS } from "./constants";
+import { useScrollDispatch } from "../../context/ScrollContext";
+import { setSectionRef } from "../../context/ScrollContext/actions";
 
 interface Props {
     name: string;
@@ -12,13 +14,15 @@ interface Props {
     artistMainColor: string;
     imgSrc: string;
     exampleImageTitle: string;
+    isPrimary: boolean;
 }
 
 
-export const ArtistSection: React.FC<Props> = ({ name, information, artistMainColor, imgSrc, exampleImageTitle }) => {
+export const ArtistSection: React.FC<Props> = ({ name, information, artistMainColor, imgSrc, exampleImageTitle, isPrimary }) => {
     const ref = useRef<Element|null>(null);
     const [additionalClassHeader, setAdditionalClassHeader] = useState<string>('');
     const [additionalClassInfo, setAdditionalClassInfo] = useState<string>('');
+    const dispatchScroll = useScrollDispatch();
     const isVisible = useIsElementVisible(ref);
 
     useEffect(() => {
@@ -27,6 +31,14 @@ export const ArtistSection: React.FC<Props> = ({ name, information, artistMainCo
             setAdditionalClassInfo(ANIMATION_CLASS.SLIDE_TWO_SEC);
         }
     }, [isVisible]);
+
+    useEffect(() => {
+        if (isPrimary) {
+            dispatchScroll(
+                setSectionRef(ref),
+            );
+        }
+    }, [ref, dispatchScroll, isPrimary])
     
     return <Box className="painterBox" sx={{backgroundColor: `${artistMainColor}`}} ref={ref}>
         <CustomImage src={imgSrc} alt={name} tooltipText={exampleImageTitle} width="20rem"/>

@@ -17,6 +17,7 @@ export const SectionGenerator: React.FC<{}> = () => {
             information={information}
             name={name}
             key={index}
+            isPrimary={index === 0}
         />
     ))
 
