@@ -1,0 +1,76 @@
+@keyframes slideFromLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+      transform: translateX(+100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+}
+
+.box {
+    height: 100vh;
+    width: 100%;
+    background-color: midnightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-x: hidden;
+}
+
+.heading {
+    font-size: 5rem;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 2rem;
+    animation: slideFromLeft 1s ease forwards;
+}
+
+.paragraph {
+    font-size: 3rem;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 2rem;
+    animation: slideFromLeft 1.5s ease forwards;
+}
+
+.headerButton {
+    background-color: rgb(8, 123, 190);
+    color: white;
+    font-size: 2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    border: 0.05rem solid black;
+    cursor: pointer;
+}
+
+.headerButton:hover {
+    background-color: rgb(67, 142, 239);
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+    animation: slideFromLeft 2s ease forwards;
+}
+
+.headingImageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2rem;
+    animation: slideFromRight 2s ease forwards;
+}
