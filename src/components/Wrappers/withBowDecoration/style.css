@@ -1,0 +1,38 @@
+.withDecorationBox {
+    position: relative;
+}
+.topLeft {
+    position: absolute;
+    height: 1.5rem;
+    width: 0.15rem;
+    background-color: white;
+    top: -0.5rem;
+    left: -0.5rem;
+}
+
+.topRight {
+    position: absolute;
+    height: 0.15rem;
+    width: 1.5rem;
+    background-color: white;
+    top: -0.5rem;
+    left: -0.5rem;
+}
+
+.downRight {
+    position: absolute;
+    height: 1.5rem;
+    width: 0.15rem;
+    background-color: white;
+    bottom: -0.5rem;
+    right: 1.5rem;
+}
+
+.downLeft {
+    position: absolute;
+    height: 0.15rem;
+    width: 1.5rem;
+    background-color: white;
+    bottom: -0.5rem;
+    right: 1.5rem;
+}
