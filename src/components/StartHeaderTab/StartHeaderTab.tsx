@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import paint from '../../magritte.jpg';
+import paint from '../../images/magritte.jpg';
 import './style.css';
 import { withBowDecoration } from "../Wrappers/withBowDecoration/withBowDecoration";
 import { CustomImage } from "../CustomImage/CustomImage";
