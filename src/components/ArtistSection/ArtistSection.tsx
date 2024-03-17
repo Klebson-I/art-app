@@ -1,8 +1,10 @@
 import { Box } from "@mui/material";
 import './style.css';
+import roseImg from '../../images/rose.png';
 import { CustomImage } from "../CustomImage/CustomImage";
 import { useEffect, useRef, useState } from "react";
 import { useIsElementVisible } from "../../hooks/useIsElementVisible";
+import { ANIMATION_CLASS } from "./constants";
 
 interface Props {
     name: string;
@@ -21,8 +23,8 @@ export const ArtistSection: React.FC<Props> = ({ name, information, artistMainCo
 
     useEffect(() => {
         if(isVisible) {
-            setAdditionalClassHeader('animateSlideOneSec');
-            setAdditionalClassInfo('animateSlideTwoSec');
+            setAdditionalClassHeader(ANIMATION_CLASS.SLIDE_ONE_SEC);
+            setAdditionalClassInfo(ANIMATION_CLASS.SLIDE_TWO_SEC);
         }
     }, [isVisible]);
     
@@ -32,5 +34,6 @@ export const ArtistSection: React.FC<Props> = ({ name, information, artistMainCo
             <h1 className={`painterName ${additionalClassHeader}`}>{`> ${name}`}</h1>
             <p className={`painterInformation ${additionalClassInfo}`}>{information}</p>
         </div>
+        <img src={roseImg} alt="decoration-rose"/>
     </Box>
 };
