@@ -7,6 +7,7 @@ import { useIsElementVisible } from "../../hooks/useIsElementVisible";
 import { ANIMATION_CLASS } from "./constants";
 import { useScrollDispatch } from "../../context/ScrollContext";
 import { setSectionRef } from "../../context/ScrollContext/actions";
+import { ARTIST_SECTION } from "../testAccessors";
 
 interface Props {
     name: string;
@@ -40,7 +41,7 @@ export const ArtistSection: React.FC<Props> = ({ name, information, artistMainCo
         }
     }, [ref, dispatchScroll, isPrimary])
     
-    return <Box className="painterBox" sx={{backgroundColor: `${artistMainColor}`}} ref={ref}>
+    return <Box className="painterBox" sx={{backgroundColor: `${artistMainColor}`}} ref={ref} data-testid={ARTIST_SECTION}>
         <CustomImage src={imgSrc} alt={name} tooltipText={exampleImageTitle} width="20rem"/>
         <div className="informationContainer">
             <h1 className={`painterName ${additionalClassHeader}`}>{`> ${name}`}</h1>
