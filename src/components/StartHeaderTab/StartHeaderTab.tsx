@@ -6,11 +6,15 @@ import { CustomImage } from "../CustomImage/CustomImage";
 import { useScrollState } from "../../context/ScrollContext";
 
 export const StartHeaderTab = () => {
-    const { artistSectionRef } = useScrollState();
+    const { artistSectionRef, goToQuizRef } = useScrollState();
     const WithDecoration = withBowDecoration(CustomImage);
 
     const scrollToArtistSection = () => {
         artistSectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const scrollToQuizSection = () => {
+        goToQuizRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     return <Box className='box'>
@@ -25,7 +29,7 @@ export const StartHeaderTab = () => {
         </p>
         <Box className="buttonBox">
             <button className="headerButton" onClick={scrollToArtistSection}>Know artist more</button>
-            <button className="headerButton">Go to quiz</button>
+            <button className="headerButton" onClick={scrollToQuizSection}>Go to quiz</button>
         </Box>
         
     </Box>

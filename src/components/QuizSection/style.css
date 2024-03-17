@@ -1,0 +1,22 @@
+.quizSectionContainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: hidden;
+    background-color: midnightblue;
+}
+
+.quizSectionHeader {
+    font-size: 4rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.quizSectionInfo {
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
