@@ -1,0 +1,21 @@
+.gridContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.imageGrid {
+    height: 90%;
+    width: 60%;
+}
+
+.questionImage {
+    height: auto;
+    width: 50%;
+    border-radius: 1rem;
+}
+
+.answerGrid {
+    height: 25%;
+}
