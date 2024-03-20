@@ -1,7 +1,9 @@
 import { Box } from "@mui/material"
+import './style.css';
+import { RoundIndicator } from "../../components/RoundIndicator/RoundIndicator";
 
 export const Quiz = () => {
-    return <Box>
-        <h1>SHEEE</h1>
+    return <Box className="quizPage">
+        <RoundIndicator />
     </Box>
 }
