@@ -48,3 +48,8 @@
 .informationContainer {
     width: 50%;
 }
+
+.roseImage {
+  height: 100%;
+  width: auto;
+}

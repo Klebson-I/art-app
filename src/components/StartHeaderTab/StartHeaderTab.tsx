@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import paint from '../../images/magritte.jpg';
 import './style.css';
 import { withBowDecoration } from "../Wrappers/withBowDecoration/withBowDecoration";
@@ -24,20 +24,22 @@ export const StartHeaderTab = () => {
             {MAIN_PARAGRAPH_TEXT}
         </p>
         <Box className="buttonBox">
-            <button 
+            <Button 
                 className="headerButton" 
                 onClick={() => scrollToRef(artistSectionRef)}
                 data-testid={SCROLL_TO_ARTIST_BUTTON}
+                variant="outlined"
             >
                 Know artist more
-            </button>
-            <button 
+            </Button>
+            <Button 
                 className="headerButton" 
                 onClick={() => scrollToRef(goToQuizRef)}
                 data-testid={SCROLL_TO_QUIZ_BUTTON}
+                variant="outlined"
             >
                 Go to quiz
-            </button>
+            </Button>
         </Box>
         
     </Box>

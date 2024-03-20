@@ -47,6 +47,6 @@ export const ArtistSection: React.FC<Props> = ({ name, information, artistMainCo
             <h1 className={`painterName ${additionalClassHeader}`}>{`> ${name}`}</h1>
             <p className={`painterInformation ${additionalClassInfo}`}>{information}</p>
         </div>
-        <img src={roseImg} alt="decoration-rose"/>
+        <img src={roseImg} alt="decoration-rose" className="roseImage"/>
     </Box>
 };
