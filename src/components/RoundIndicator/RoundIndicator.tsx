@@ -3,6 +3,6 @@ import './style.css'
 
 export const RoundIndicator = () => {
     return <Box className="roundBox">
-        <h1 className="roundInfo">1 / 10</h1>
+        <h1 className="roundInfo"> Question 1 / 10</h1>
     </Box>
 };
