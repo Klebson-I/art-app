@@ -8,6 +8,9 @@
 .imageGrid {
     height: 90%;
     width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .questionImage {
@@ -17,5 +20,9 @@
 }
 
 .answerGrid {
-    height: 25%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
 }

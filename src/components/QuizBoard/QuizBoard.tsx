@@ -1,18 +1,28 @@
-import {  Button, Grid } from "@mui/material"
+import {  Button } from "@mui/material"
 import { getQuestionSet } from "./utils"
 import { useEffect, useState } from "react";
 import { QuestionsAssignWithOptionsInterface, QuestionsAssignsWithOptionsListType } from "./types";
 import './style.css';
+import { QuizOption } from "./QuizOption/QuizOption";
 
-export const QuizBoard = () => {
+interface Props {
+    actualQuestionIndex: number;
+    setActualQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex }) => {
     const [quiz, setQuiz] = useState<QuestionsAssignsWithOptionsListType>([]);
-    const [actualQuestionIndex, setActualQuestionIndex] = useState<number>(0);
     const [actualQuestion, setActualQuestion] = useState<QuestionsAssignWithOptionsInterface>();
+    const [optionClicked, setOptionClicked] = useState<string>('');
+
+    const isNextQuestionButtonDisabled = !optionClicked;
+
 
     const incrementQuestion = () => {
         if (actualQuestionIndex < quiz.length - 1) {
             setActualQuestionIndex( prev => prev + 1);
         }
+        setOptionClicked('');
     }
 
     useEffect(() => {
@@ -24,16 +34,30 @@ export const QuizBoard = () => {
         setActualQuestion(quiz[actualQuestionIndex]);
     }, [actualQuestionIndex, quiz]);
 
+    const options = actualQuestion?.options.map((option) => (
+        <QuizOption 
+            option={option} 
+            painter={actualQuestion.painter}
+            optionClicked={optionClicked}
+            setOptionClicked={setOptionClicked}
+        />
+    ));
 
-    return <Grid container spacing={12} className="gridContainer">
-        <Grid item spacing={12} className="imageGrid">
+    return <div className="gridContainer">
+        <div className="imageGrid">
             <img src={actualQuestion?.image} alt="" className="questionImage"/>
-        </Grid>
-        <Grid item spacing={12} className="answerGrid">
-            {
-                actualQuestion?.options.map((option) => <p>{option}</p>)
-            }
-            <Button onClick={incrementQuestion} variant='outlined'>Next Question</Button>
-        </Grid>
-    </Grid>
+        </div>
+        <div className="answerGrid">
+            {options}
+            <Button 
+                onClick={incrementQuestion} 
+                variant='outlined' 
+                sx={{marginTop: '1rem'}} 
+                fullWidth
+                disabled={isNextQuestionButtonDisabled}
+            >
+                Next Question
+            </Button>
+        </div>
+    </div>
 }
