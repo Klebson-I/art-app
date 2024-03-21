@@ -1,15 +1,15 @@
 import { Button } from "@mui/material"
-import { useEffect, useState } from "react";
-import { getButtonColor } from "./utils";
+import { getButtonColor, isButtonSelectedAsCorrectAnswer } from "./utils";
 
 interface Props {
     option: string;
     painter: string;
     optionClicked: string;
     setOptionClicked: React.Dispatch<React.SetStateAction<string>>;
+    setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, setOptionClicked }) => {
+export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, setOptionClicked, setScore }) => {
 
     const buttonColor = getButtonColor({
         option,
@@ -17,7 +17,20 @@ export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, se
         painter,
     });
 
-    const handleOnClick = () => !optionClicked && setOptionClicked(option);
+    const handleOnClick = () => {
+        if (!optionClicked) {
+            return;
+        }
+        setOptionClicked(option);
+        const isCorrectAnswer = isButtonSelectedAsCorrectAnswer({
+            option,
+            optionClicked,
+            painter,
+        });
+        if (isCorrectAnswer) {
+            setScore(prev => prev + 1);
+        }
+    };
 
     return <Button 
         variant="outlined" 

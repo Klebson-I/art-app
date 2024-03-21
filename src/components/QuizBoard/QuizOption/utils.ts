@@ -2,7 +2,7 @@ import { GetButtonColorInput, IsButtonSelectedAsCorrectAnswerInput, colorType } 
 
 const isButtonCorrectAnswer = (option: string, painter: string) => option === painter;
 
-const isButtonSelectedAsCorrectAnswer = ({
+export const isButtonSelectedAsCorrectAnswer = ({
     option,
     painter,
     optionClicked,

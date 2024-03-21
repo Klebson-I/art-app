@@ -14,6 +14,7 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
     const [quiz, setQuiz] = useState<QuestionsAssignsWithOptionsListType>([]);
     const [actualQuestion, setActualQuestion] = useState<QuestionsAssignWithOptionsInterface>();
     const [optionClicked, setOptionClicked] = useState<string>('');
+    const [score, setScore] = useState<number>(0);
 
     const isNextQuestionButtonDisabled = !optionClicked;
 
@@ -40,6 +41,7 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
             painter={actualQuestion.painter}
             optionClicked={optionClicked}
             setOptionClicked={setOptionClicked}
+            setScore={setScore}
         />
     ));
 
