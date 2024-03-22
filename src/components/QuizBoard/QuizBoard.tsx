@@ -8,13 +8,16 @@ import { QuizOption } from "./QuizOption/QuizOption";
 interface Props {
     actualQuestionIndex: number;
     setActualQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
+    score: number;
+    setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex }) => {
+export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex, score, setScore }) => {
     const [quiz, setQuiz] = useState<QuestionsAssignsWithOptionsListType>([]);
     const [actualQuestion, setActualQuestion] = useState<QuestionsAssignWithOptionsInterface>();
     const [optionClicked, setOptionClicked] = useState<string>('');
-    const [score, setScore] = useState<number>(0);
+
+    console.log(optionClicked);
 
     const isNextQuestionButtonDisabled = !optionClicked;
 

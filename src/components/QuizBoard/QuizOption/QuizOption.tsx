@@ -1,5 +1,6 @@
 import { Button } from "@mui/material"
 import { getButtonColor, isButtonSelectedAsCorrectAnswer } from "./utils";
+import { useEffect } from "react";
 
 interface Props {
     option: string;
@@ -18,10 +19,13 @@ export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, se
     });
 
     const handleOnClick = () => {
-        if (!optionClicked) {
+        if (optionClicked) {
             return;
         }
         setOptionClicked(option);
+    };
+
+    useEffect(() => {
         const isCorrectAnswer = isButtonSelectedAsCorrectAnswer({
             option,
             optionClicked,
@@ -30,7 +34,8 @@ export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, se
         if (isCorrectAnswer) {
             setScore(prev => prev + 1);
         }
-    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [optionClicked, setScore]);
 
     return <Button 
         variant="outlined" 

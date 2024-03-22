@@ -6,9 +6,14 @@ import { useState } from "react";
 
 export const Quiz = () => {
     const [actualQuestionIndex, setActualQuestionIndex] = useState<number>(0);
-
+    const [score, setScore] = useState<number>(0);
     return <Box className="quizPage">
-        <RoundIndicator actualQuestionIndex={actualQuestionIndex}/>
-        <QuizBoard actualQuestionIndex={actualQuestionIndex} setActualQuestionIndex={setActualQuestionIndex}/>
+        <RoundIndicator actualQuestionIndex={actualQuestionIndex} score={score}/>
+        <QuizBoard 
+            actualQuestionIndex={actualQuestionIndex} 
+            setActualQuestionIndex={setActualQuestionIndex}
+            score={score}
+            setScore={setScore}
+        />
     </Box>
 }
