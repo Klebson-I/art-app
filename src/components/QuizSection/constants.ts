@@ -1,0 +1,4 @@
+export enum GAME_STATE {
+    START_GAME = 'START GAME',
+    CONTINUE_GAME = 'CONTINUE GAME',
+};
