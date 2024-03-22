@@ -39,5 +39,6 @@ export const useGameHandler = (actualQuestionIndex: number) => {
         optionClicked,
         setOptionClicked,
         quiz,
+        setWasGameSet,
     }
 }
