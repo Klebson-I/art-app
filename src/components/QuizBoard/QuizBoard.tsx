@@ -1,9 +1,10 @@
-import {  Button } from "@mui/material"
 import './style.css';
 import { QuizOption } from "./QuizOption/QuizOption";
 import { useGameHandler } from "../../hooks/useGameHandler";
 import { useGameStateDispatch } from "../../context/GameContext";
 import { updateQuestionIndex } from "../../context/GameContext/actions";
+import { NextQuestionButton } from "../NextQuestionButton/NextQuestionButton";
+import { EndGameButtons } from "../EndGameButtons/EndGameButtons";
 
 interface Props {
     actualQuestionIndex: number;
@@ -17,6 +18,7 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
         optionClicked,
         setOptionClicked,
         quiz,
+        setWasGameSet,
     } = useGameHandler(actualQuestionIndex);
 
     const dispatchGameState = useGameStateDispatch();
@@ -47,21 +49,20 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
         />
     ));
 
+    const buttonSection = actualQuestionIndex === 9 && optionClicked
+        ? <EndGameButtons setWasGameSet={setWasGameSet}/>
+        : <NextQuestionButton 
+            action={incrementQuestion}
+            isDisabled={isNextQuestionButtonDisabled}
+        />
+
     return <div className="gridContainer">
         <div className="imageGrid">
             <img src={actualQuestion?.image} alt="" className="questionImage"/>
         </div>
         <div className="answerGrid">
             {options}
-            <Button 
-                onClick={incrementQuestion} 
-                variant='outlined' 
-                sx={{marginTop: '1rem'}} 
-                fullWidth
-                disabled={isNextQuestionButtonDisabled}
-            >
-                Next Question
-            </Button>
+            {buttonSection}
         </div>
     </div>
 }
