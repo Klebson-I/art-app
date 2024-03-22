@@ -7,8 +7,8 @@ const gameDispatchContext = createContext<GameDispatchContextType>(null);
 
 export const GameState: React.FC<any> = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, {
-        score: 0,
-        actualQuestionIndex: 0,
+        score: null,
+        actualQuestionIndex: null,
         game: [],
     } as GameStateInterface);
     return <gameContext.Provider value={state}>

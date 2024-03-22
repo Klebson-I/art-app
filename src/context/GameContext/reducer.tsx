@@ -23,8 +23,8 @@ export const reducer = (state: GameStateInterface, { action, payload }: GameStat
         }
         case RESET_GAME: {
             return {
-                actualQuestionIndex: 0,
-                score: 0,
+                actualQuestionIndex: null,
+                score: null,
                 game: [],
             };
         }
