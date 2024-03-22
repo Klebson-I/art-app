@@ -1,26 +1,23 @@
 import {  Button } from "@mui/material"
-import { getQuestionSet } from "./utils"
-import { useEffect, useState } from "react";
-import { QuestionsAssignWithOptionsInterface, QuestionsAssignsWithOptionsListType } from "./types";
 import './style.css';
 import { QuizOption } from "./QuizOption/QuizOption";
+import { useGameHandler } from "../../hooks/useGameHandler";
 
 interface Props {
     actualQuestionIndex: number;
     setActualQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
-    score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex, score, setScore }) => {
-    const [quiz, setQuiz] = useState<QuestionsAssignsWithOptionsListType>([]);
-    const [actualQuestion, setActualQuestion] = useState<QuestionsAssignWithOptionsInterface>();
-    const [optionClicked, setOptionClicked] = useState<string>('');
-
-    console.log(optionClicked);
+export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex, setScore }) => {
+    const {
+        actualQuestion,
+        optionClicked,
+        setOptionClicked,
+        quiz,
+    } = useGameHandler(actualQuestionIndex);
 
     const isNextQuestionButtonDisabled = !optionClicked;
-
 
     const incrementQuestion = () => {
         if (actualQuestionIndex < quiz.length - 1) {
@@ -28,15 +25,6 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
         }
         setOptionClicked('');
     }
-
-    useEffect(() => {
-        const questionSet = getQuestionSet();
-        setQuiz(questionSet);
-    }, []);
-
-    useEffect(() => {
-        setActualQuestion(quiz[actualQuestionIndex]);
-    }, [actualQuestionIndex, quiz]);
 
     const options = actualQuestion?.options.map((option) => (
         <QuizOption 
