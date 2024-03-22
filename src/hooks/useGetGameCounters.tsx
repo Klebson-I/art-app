@@ -1,30 +1,54 @@
 import { useEffect, useState } from "react";
-import { useGameState } from "../context/GameContext";
+import { useGameState, useGameStateDispatch } from "../context/GameContext";
+import { updateQuestionIndex, updateScore } from "../context/GameContext/actions";
 
 export const useGetGameCounter = () => {
     const [actualQuestionIndex, setActualQuestionIndex] = useState<number>(0);
     const [score, setScore] = useState<number>(0);
+    const [wasScoreSet, setWasScoreSet] = useState<Boolean>(false);
+    const [wasIndexSet, setWasIndexSet] = useState<Boolean>(false);
     const {
         actualQuestionIndex: actualQuestionIndexFromState,
         score: scoreFromState,
     } = useGameState();
+    const dispatchGameState = useGameStateDispatch();
 
     useEffect(() => {
-        if (actualQuestionIndexFromState) {
+        if (wasIndexSet) {
+            return;
+        }
+        if (actualQuestionIndexFromState !== null) {
             setActualQuestionIndex(actualQuestionIndexFromState)
+            return;
         }
-    }, [actualQuestionIndexFromState]);
+        setActualQuestionIndex(0);
+        dispatchGameState(
+            updateQuestionIndex(0)
+        )
+        setWasIndexSet(true);
+    }, [actualQuestionIndexFromState, dispatchGameState, wasIndexSet]);
 
     useEffect(() => {
-        if (scoreFromState) {
-            setScore(scoreFromState);
+        if (wasScoreSet) {
+            return;
         }
-    }, [scoreFromState]);
+        if (scoreFromState !== null) {
+            setScore(scoreFromState);
+            return;
+        }
+        setScore(0);
+        dispatchGameState(
+            updateScore(0)
+        )
+        setWasScoreSet(true);
+    }, [scoreFromState, wasScoreSet, dispatchGameState]);
 
     return {
         actualQuestionIndex,
         setActualQuestionIndex,
         score,
         setScore,
+        setWasIndexSet,
+        setWasScoreSet,
     };
 }

@@ -10,6 +10,8 @@ export const Quiz = () => {
         score,
         setActualQuestionIndex,
         setScore,
+        setWasIndexSet,
+        setWasScoreSet,
     } = useGetGameCounter();
     
     return <Box className="quizPage">
@@ -18,6 +20,8 @@ export const Quiz = () => {
             actualQuestionIndex={actualQuestionIndex} 
             setActualQuestionIndex={setActualQuestionIndex}
             setScore={setScore}
+            setWasIndexSet={setWasIndexSet}
+            setWasScoreSet={setWasScoreSet}
         />
     </Box>
 }

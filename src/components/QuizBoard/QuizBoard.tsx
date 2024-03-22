@@ -10,9 +10,11 @@ interface Props {
     actualQuestionIndex: number;
     setActualQuestionIndex: React.Dispatch<React.SetStateAction<number>>;
     setScore: React.Dispatch<React.SetStateAction<number>>;
+    setWasIndexSet:React.Dispatch<React.SetStateAction<Boolean>>,
+    setWasScoreSet:React.Dispatch<React.SetStateAction<Boolean>>,
 }
 
-export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex, setScore }) => {
+export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuestionIndex, setScore, setWasIndexSet, setWasScoreSet }) => {
     const {
         actualQuestion,
         optionClicked,
@@ -50,7 +52,12 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
     ));
 
     const buttonSection = actualQuestionIndex === 9 && optionClicked
-        ? <EndGameButtons setWasGameSet={setWasGameSet}/>
+        ? <EndGameButtons 
+            setWasGameSet={setWasGameSet}
+            setWasIndexSet={setWasIndexSet}
+            setWasScoreSet={setWasScoreSet}
+            setOptionClicked={setOptionClicked}
+        />
         : <NextQuestionButton 
             action={incrementQuestion}
             isDisabled={isNextQuestionButtonDisabled}

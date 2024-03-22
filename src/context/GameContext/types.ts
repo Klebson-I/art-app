@@ -2,8 +2,8 @@ import { QuestionsAssignsWithOptionsListType } from "../../components/QuizBoard/
 import { ScrollStateAction } from "../ScrollContext/types";
 
 export interface GameStateInterface {
-    score: number,
-    actualQuestionIndex: number,
+    score: number | null,
+    actualQuestionIndex: number | null,
     game: QuestionsAssignsWithOptionsListType,
 }
 
