@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { GlobalRoutes } from './Routes/Routes';
+import { GameState } from './context/GameContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <GlobalRoutes />
+    <GameState>
+      <GlobalRoutes />
+    </GameState>
   </React.StrictMode>
 );
 

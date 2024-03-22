@@ -2,6 +2,8 @@ import {  Button } from "@mui/material"
 import './style.css';
 import { QuizOption } from "./QuizOption/QuizOption";
 import { useGameHandler } from "../../hooks/useGameHandler";
+import { useGameStateDispatch } from "../../context/GameContext";
+import { updateQuestionIndex } from "../../context/GameContext/actions";
 
 interface Props {
     actualQuestionIndex: number;
@@ -17,11 +19,20 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
         quiz,
     } = useGameHandler(actualQuestionIndex);
 
+    const dispatchGameState = useGameStateDispatch();
+
     const isNextQuestionButtonDisabled = !optionClicked;
 
     const incrementQuestion = () => {
         if (actualQuestionIndex < quiz.length - 1) {
-            setActualQuestionIndex( prev => prev + 1);
+            let index = 0;
+            setActualQuestionIndex( prev => {
+                index = prev + 1;
+                return index;
+            });
+            dispatchGameState(
+                updateQuestionIndex(index),
+            );
         }
         setOptionClicked('');
     }

@@ -1,6 +1,8 @@
 import { Button } from "@mui/material"
 import { getButtonColor, isButtonSelectedAsCorrectAnswer } from "./utils";
 import { useEffect } from "react";
+import { useGameStateDispatch } from "../../../context/GameContext";
+import { updateScore } from "../../../context/GameContext/actions";
 
 interface Props {
     option: string;
@@ -11,7 +13,7 @@ interface Props {
 }
 
 export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, setOptionClicked, setScore }) => {
-
+    const dispatchGameState = useGameStateDispatch();
     const buttonColor = getButtonColor({
         option,
         optionClicked,
@@ -32,7 +34,12 @@ export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, se
             painter,
         });
         if (isCorrectAnswer) {
-            setScore(prev => prev + 1);
+            let score = 0;
+            setScore(prev => {
+                score = prev + 1;
+                return score;
+            });
+            dispatchGameState(updateScore(score));
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [optionClicked, setScore]);
