@@ -2,13 +2,26 @@ import { Box } from "@mui/material"
 import './style.css';
 import { RoundIndicator } from "../../components/RoundIndicator/RoundIndicator";
 import { QuizBoard } from "../../components/QuizBoard/QuizBoard";
-import { useState } from "react";
+import { useGetGameCounter } from "../../hooks/useGetGameCounters";
 
 export const Quiz = () => {
-    const [actualQuestionIndex, setActualQuestionIndex] = useState<number>(0);
-
+    const {
+        actualQuestionIndex,
+        score,
+        setActualQuestionIndex,
+        setScore,
+        setWasIndexSet,
+        setWasScoreSet,
+    } = useGetGameCounter();
+    
     return <Box className="quizPage">
-        <RoundIndicator actualQuestionIndex={actualQuestionIndex}/>
-        <QuizBoard actualQuestionIndex={actualQuestionIndex} setActualQuestionIndex={setActualQuestionIndex}/>
+        <RoundIndicator actualQuestionIndex={actualQuestionIndex} score={score}/>
+        <QuizBoard 
+            actualQuestionIndex={actualQuestionIndex} 
+            setActualQuestionIndex={setActualQuestionIndex}
+            setScore={setScore}
+            setWasIndexSet={setWasIndexSet}
+            setWasScoreSet={setWasScoreSet}
+        />
     </Box>
 }
