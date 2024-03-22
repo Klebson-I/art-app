@@ -25,7 +25,7 @@ export const reducer = (state: GameStateInterface, { action, payload }: GameStat
             return {
                 actualQuestionIndex: 0,
                 score: 0,
-                game: 0,
+                game: [],
             };
         }
         default: return state;
