@@ -7,3 +7,4 @@ export const WITH_BOW_4 = 'with-bow-4';
 export const ARTIST_SECTION = 'artist-section';
 export const SCORE_INDICATOR = 'score-indicator';
 export const INDEX_INDICATOR = 'index-indicator';
+export const QUIZ_OPTION_BUTTON = 'quiz-option-button';
