@@ -1,7 +1,7 @@
 import { PAINTERS, QUESTION_ASSIGNS } from "./consts";
 import { QuestionsAssignWithOptionsInterface, QuestionsAssignsListType, QuestionsAssignsWithOptionsListType } from "./types";
 
-const getMixedArray = (arr: any[]) => {
+export const getMixedArray = (arr: any[]) => {
     const arrayCopy = [...arr];
     const mixedArray = [];
     for (let i = 0; i < arr.length; i++) {
@@ -12,7 +12,7 @@ const getMixedArray = (arr: any[]) => {
     return mixedArray;
 }
 
-const getOptions = (toExclude: string) => {
+export const getOptions = (toExclude: string) => {
     const OPTIONS_COUNT = 3;
     const optionsWithoutExcluded = PAINTERS.filter((painter) => painter !== toExclude);
     const selectedOptions = [];

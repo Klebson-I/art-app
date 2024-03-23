@@ -3,6 +3,7 @@ import { getButtonColor, isButtonSelectedAsCorrectAnswer } from "./utils";
 import { useEffect } from "react";
 import { useGameStateDispatch } from "../../../context/GameContext";
 import { updateScore } from "../../../context/GameContext/actions";
+import { QUIZ_OPTION_BUTTON } from "../../testAccessors";
 
 interface Props {
     option: string;
@@ -51,6 +52,7 @@ export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, se
         size="large"
         sx={{margin: '0.2rem'}}
         onClick={handleOnClick}
+        data-testid={QUIZ_OPTION_BUTTON}
     >
         {option}
     </Button>

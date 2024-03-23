@@ -50,7 +50,7 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
             setScore={setScore}
         />
     ));
-
+    
     const buttonSection = actualQuestionIndex === 9 && optionClicked
         ? <EndGameButtons 
             setWasGameSet={setWasGameSet}
