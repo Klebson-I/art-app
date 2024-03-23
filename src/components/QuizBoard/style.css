@@ -26,3 +26,22 @@
     justify-content: space-evenly;
     flex-direction: column;
 }
+
+@media (max-width: 900px) {
+    .gridContainer {
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .answerGrid {
+        flex-direction: row;
+        width: 70%;
+        flex-wrap: wrap;
+    }
+    .imageGrid {
+        width: 70%;
+    }
+    .questionImage {
+        height: auto;
+        width: 65%;
+    }
+}
