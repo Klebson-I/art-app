@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useGameState, useGameStateDispatch } from "../../context/GameContext";
 import { resetQuizGame } from "../../context/GameContext/actions";
 import React from "react";
+import { BACK_TO_MAIN_BUTTON, START_AGAIN_BUTTON } from "../testAccessors";
 
 interface Props {
     setWasGameSet:  React.Dispatch<React.SetStateAction<Boolean>>;
@@ -20,6 +21,7 @@ export const EndGameButtons: React.FC<Props> = ({ setWasGameSet, setWasScoreSet,
     } = useGameState();
 
     const goBackToMain = () => {
+        console.log(actualQuestionIndex, '!!!!!!!!!!!!!!')
         if (actualQuestionIndex === 9) {
             dispatchGameState(
                 resetQuizGame(),
@@ -39,10 +41,10 @@ export const EndGameButtons: React.FC<Props> = ({ setWasGameSet, setWasScoreSet,
     }
 
     return <Box className='buttonsBox'>
-        <Button variant="outlined" fullWidth onClick={startNewGame}>
+        <Button variant="outlined" fullWidth onClick={startNewGame} data-testid={START_AGAIN_BUTTON}>
             START AGAIN
         </Button>
-        <Button variant="outlined" fullWidth onClick={goBackToMain}>
+        <Button variant="outlined" fullWidth onClick={goBackToMain} data-testid={BACK_TO_MAIN_BUTTON}>
             BACK TO MAIN
         </Button>
     </Box>
