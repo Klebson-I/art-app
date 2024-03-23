@@ -8,3 +8,4 @@ export const ARTIST_SECTION = 'artist-section';
 export const SCORE_INDICATOR = 'score-indicator';
 export const INDEX_INDICATOR = 'index-indicator';
 export const QUIZ_OPTION_BUTTON = 'quiz-option-button';
+export const NEXT_QUESTION_BUTTON = 'next-question-button';
