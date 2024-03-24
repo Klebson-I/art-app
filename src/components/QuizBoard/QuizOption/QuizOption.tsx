@@ -48,9 +48,9 @@ export const QuizOption: React.FC<Props> = ({ option, painter, optionClicked, se
     return <Button 
         variant="outlined" 
         color={buttonColor}
-        fullWidth
         size="large"
-        sx={{margin: '0.2rem'}}
+        sx={{margin: '0.2rem' }}
+        fullWidth
         onClick={handleOnClick}
         data-testid={QUIZ_OPTION_BUTTON}
     >

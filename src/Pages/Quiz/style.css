@@ -1,7 +1,7 @@
 .quizPage {
     width: 100%;
     height: 100vh;
-    background-color: midnightblue;
+    background-color: rgb(243, 243, 211);
     overflow: hidden;
     display: flex;
     flex-direction: column;
