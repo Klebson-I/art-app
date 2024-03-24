@@ -6,6 +6,7 @@ import { setQuizRef } from "../../context/ScrollContext/actions";
 import { useNavigate } from "react-router-dom";
 import { useIsGamePending } from "../../hooks/useIsGamePending";
 import { getButtonText } from "./utils";
+import { GO_TO_QUIZ_BUTTON } from "../testAccessors";
 
 export const QuizSection: React.FC<{}> = () => {
     const dispatchScroll = useScrollDispatch();
@@ -24,6 +25,13 @@ export const QuizSection: React.FC<{}> = () => {
     return <Box className="quizSectionContainer" ref={ref}>
         <h1 className="quizSectionHeader">Already have some knowledge? Let's check it</h1>
         <p className="quizSectionInfo">Take a challange in Quiz - indicate a painter that artwork is assign to</p>
-        <Button variant="outlined" onClick={() => navigate('/quiz')} sx={{ marginTop: '2rem'}}>{buttonText}</Button>
+        <Button 
+            variant="outlined" 
+            onClick={() => navigate('/quiz')} 
+            sx={{ marginTop: '2rem'}}
+            data-testid={GO_TO_QUIZ_BUTTON}
+        >
+            {buttonText}
+        </Button>
     </Box>
 }
