@@ -21,7 +21,6 @@ export const EndGameButtons: React.FC<Props> = ({ setWasGameSet, setWasScoreSet,
     } = useGameState();
 
     const goBackToMain = () => {
-        console.log(actualQuestionIndex, '!!!!!!!!!!!!!!')
         if (actualQuestionIndex === 9) {
             dispatchGameState(
                 resetQuizGame(),
