@@ -1,7 +1,7 @@
 # Simple Art React app
 ### App includes a short section with information about artist and a quiz which enable user to check himself in a field of painters.
 
-# Starthttps://github.com/Klebson-I/art-app/tree/main
+# Start
 ### Main branch with functionalities is DEV, make sure you switch to it.
 ## RUN
 ### Before run, install dependencies:
