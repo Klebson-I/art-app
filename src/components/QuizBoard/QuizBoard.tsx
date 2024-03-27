@@ -5,6 +5,7 @@ import { useGameStateDispatch } from "../../context/GameContext";
 import { updateQuestionIndex } from "../../context/GameContext/actions";
 import { NextQuestionButton } from "../NextQuestionButton/NextQuestionButton";
 import { EndGameButtons } from "../EndGameButtons/EndGameButtons";
+import { LAST_QUIZ_INDEX } from '../constants';
 
 interface Props {
     actualQuestionIndex: number;
@@ -51,7 +52,7 @@ export const QuizBoard: React.FC<Props> = ({ actualQuestionIndex, setActualQuest
         />
     ));
     
-    const buttonSection = actualQuestionIndex === 9 && optionClicked
+    const buttonSection = actualQuestionIndex === LAST_QUIZ_INDEX && optionClicked
         ? <EndGameButtons 
             setWasGameSet={setWasGameSet}
             setWasIndexSet={setWasIndexSet}
