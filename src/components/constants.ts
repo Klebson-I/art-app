@@ -1,0 +1,1 @@
+export const LAST_QUIZ_INDEX = 9;

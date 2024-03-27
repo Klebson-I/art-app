@@ -5,6 +5,7 @@ import { useGameState, useGameStateDispatch } from "../../context/GameContext";
 import { resetQuizGame } from "../../context/GameContext/actions";
 import React from "react";
 import { BACK_TO_MAIN_BUTTON, START_AGAIN_BUTTON } from "../testAccessors";
+import { LAST_QUIZ_INDEX } from "../constants";
 
 interface Props {
     setWasGameSet:  React.Dispatch<React.SetStateAction<Boolean>>;
@@ -21,8 +22,7 @@ export const EndGameButtons: React.FC<Props> = ({ setWasGameSet, setWasScoreSet,
     } = useGameState();
 
     const goBackToMain = () => {
-        console.log(actualQuestionIndex, '!!!!!!!!!!!!!!')
-        if (actualQuestionIndex === 9) {
+        if (actualQuestionIndex === LAST_QUIZ_INDEX) {
             dispatchGameState(
                 resetQuizGame(),
             );

@@ -11,3 +11,4 @@ export const QUIZ_OPTION_BUTTON = 'quiz-option-button';
 export const NEXT_QUESTION_BUTTON = 'next-question-button';
 export const BACK_TO_MAIN_BUTTON = 'back-to-main-button';
 export const START_AGAIN_BUTTON = 'start-again-button';
+export const GO_TO_QUIZ_BUTTON = 'go-to-quiz-button';
